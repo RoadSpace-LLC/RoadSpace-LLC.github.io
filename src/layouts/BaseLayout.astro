@@ -1,0 +1,28 @@
+---
+import '../styles/default.css';
+import Header from '../components/Header.astro';
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'RoadSpace — driver-focused racing telemetry analysis and visualization.' } = Astro.props;
+const lastUpdated = new Date();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#171717" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#about">Skip to content</a>
+    <Header />
+    <main><slot /></main>
+    <footer>
+      <p>Last updated <time datetime={lastUpdated.toISOString()}>{lastUpdated.toLocaleString('en-US', { timeZone: 'America/New_York', timeZoneName: 'short' })}</time></p>
+    </footer>
+  </body>
+</html>

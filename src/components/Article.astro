@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props { title?: string; }
+const { title } = Astro.props;
+---
+<BaseLayout title={title ? `RoadSpace — ${title}` : 'RoadSpace'}>
+  <article id="about" tabindex="-1">
+    {title && <div class="title"><h1>{title}</h1></div>}
+    <slot />
+  </article>
+</BaseLayout>

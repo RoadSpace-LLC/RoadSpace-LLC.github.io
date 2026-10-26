@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+
+cd "$(git rev-parse --show-toplevel)"
+
+rm -f landing.zip
+zip -r landing.zip . \
+  -x "landing.zip" \
+  -x ".git/*" \
+  -x "node_modules/*" \
+  -x ".astro/*" \
+  -x "dist/*"
