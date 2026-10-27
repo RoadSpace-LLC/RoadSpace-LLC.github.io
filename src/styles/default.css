@@ -13,25 +13,35 @@
   --muted: #aaa7a0;
   --rule: #77746f;
   --link: #c1d4e8;
+
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 62.5%;
   background: var(--background);
   color: var(--foreground);
-  overflow-y: scroll;
+  height: 100%;
+  overflow: hidden;
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-height: 100svh;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
   width: min(60rem, 90%);
   margin: 0 auto;
   font-size: 1.8rem;
   line-height: 1.65;
 }
+
 header {
-    font-family: 'Chicago', sans-serif;
+  font-family: 'Chicago', sans-serif;
+  font-display: block;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -39,26 +49,111 @@ header {
   padding: 2.4rem 0 1.2rem;
   border-bottom: 0.2rem solid var(--rule);
 }
-a { color: var(--link); text-underline-offset: 0.22em; }
-a:hover { color: #fff; }
-a:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; }
-.brand, nav a {
+
+header,
+footer {
+  flex-shrink: 0;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.22em;
+}
+
+a:hover {
+  color: #fff;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 5px;
+}
+
+.brand,
+nav a {
   color: var(--foreground);
   text-decoration: none;
   font-weight: bold;
 }
-.brand { font-size: 1.8rem; letter-spacing: 0.06em; }
-nav { display: flex; gap: 2rem; }
-nav a { font-size: 1.5rem; text-transform: uppercase; padding: 0.5rem 0; }
-nav a:hover, nav a:focus-visible { text-decoration: underline; }
-main { flex: 1; margin: 2rem 0 3rem; }
-article:focus { outline: none; }
-.title { margin-bottom: 3rem; }
-h1 { font-size: 3rem; line-height: 1.25; margin: 0; text-wrap: balance; }
-p { margin: 0 0 1.8rem; }
-.intro { color: #d0cdc7; }
-.actions { margin: 2.6rem 0 0; }
-.status { margin: 1.6rem 0 0; color: var(--muted); font-size: 1.4rem; }
+
+.brand {
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  text-decoration: underline;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 2rem 0.6rem 1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+main > article {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  min-width: 0;
+}
+
+article:focus {
+  outline: none;
+}
+
+.title {
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.25;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1.8rem;
+}
+
+.intro {
+  color: #d0cdc7;
+}
+
+.actions {
+  margin: 2.6rem 0 0;
+  text-align: right;
+}
+
+.status {
+  margin: 1.6rem 0 0;
+  color: var(--muted);
+  font-size: 1.4rem;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -69,7 +164,12 @@ p { margin: 0 0 1.8rem; }
   font-size: 1.6rem;
   text-decoration: none;
 }
-.button:hover { background: #292827; border-color: var(--foreground); }
+
+.button:hover {
+  background: #292827;
+  border-color: var(--foreground);
+}
+
 footer {
   margin-top: auto;
   padding: 1.2rem 0;
@@ -77,9 +177,14 @@ footer {
   color: var(--muted);
   font-size: 1.2rem;
 }
-footer p { margin: 0; }
+
+footer p {
+  margin: 0;
+}
+
 .skip-link {
   position: absolute;
+  z-index: 10;
   top: 0;
   left: 5%;
   padding: 0.8rem 1.2rem;
@@ -87,11 +192,26 @@ footer p { margin: 0; }
   color: var(--background);
   transform: translateY(-150%);
 }
-.skip-link:focus { transform: translateY(0); }
-@media (min-width: 640px) {
-  header { flex-direction: row; align-items: center; justify-content: space-between; padding-top: 2.8rem; }
-  footer { text-align: right; }
+
+.skip-link:focus {
+  transform: translateY(0);
 }
+
+@media (min-width: 640px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2.8rem;
+  }
+
+  footer {
+    text-align: right;
+  }
+}
+
 @media (max-width: 369px) {
-  h1 { font-size: 2.7rem; }
+  h1 {
+    font-size: 2.7rem;
+  }
 }

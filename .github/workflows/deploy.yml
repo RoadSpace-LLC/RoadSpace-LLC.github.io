@@ -2,6 +2,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main, master]
+  schedule:
+    - cron: '17 6 * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,6 +24,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run activity
+        env:
+          ACTIVITY_TOKEN: ${{ secrets.ACTIVITY_TOKEN }}
+          ACTIVITY_TOKEN_2: ${{ secrets.ACTIVITY_TOKEN_2 }}
       - run: npm run build
         env:
           SITE_URL: ${{ steps.pages.outputs.origin }}

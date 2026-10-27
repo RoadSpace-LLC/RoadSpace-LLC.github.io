@@ -1,9 +1,11 @@
 ---
 import Article from '../components/Article.astro';
+import ActivityHeatmap from '../components/ActivityHeatmap.astro';
 ---
 <Article>
-  <p class="intro">Analyze your telemetry data, understand your performance, and discover where you're leaving time on the track.</p>
+  <p class="intro">Analyze your driving, understand your performance, and find where to improve.</p>
   <p class="actions">
-    <a class="button" href="mailto:hello@roadspace.example?subject=RoadSpace%20pilot%20waitlist">Join the waitlist <span aria-hidden="true">&rarr;</span></a>
+    <a class="button" href="mailto:hello@roadspace.example?subject=RoadSpace%20pilot%20waitlist">Pilot Waitlist <span aria-hidden="true">&rarr;</span></a>
   </p>
+  <ActivityHeatmap />
 </Article>

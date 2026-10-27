@@ -1,28 +1,67 @@
 ---
 import '../styles/default.css';
 import Header from '../components/Header.astro';
+import activity from '../data/activity.json';
+
+const lastProjectUpdate = activity.available
+  ? Object.entries(activity.counts)
+      .filter(([, count]) => count > 0)
+      .map(([date]) => date)
+      .sort()
+      .at(-1)
+  : undefined;
+
 interface Props {
   title: string;
   description?: string;
 }
-const { title, description = 'RoadSpace — driver-focused racing telemetry analysis and visualization.' } = Astro.props;
+const {
+  title,
+  description = 'RoadSpace — driver-focused racing telemetry analysis and visualization.',
+} = Astro.props;
 const lastUpdated = new Date();
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link
+      rel="preload"
+      href={`${import.meta.env.BASE_URL}fonts/ChicagoFLF.ttf`}
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#171717" />
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
   <body>
-    <a class="skip-link" href="#about">Skip to content</a>
+    <a class="skip-link" href="#about">
+      Skip to content
+    </a>
     <Header />
-    <main><slot /></main>
+    <main>
+      <slot />
+    </main>
     <footer>
-      <p>Last updated <time datetime={lastUpdated.toISOString()}>{lastUpdated.toLocaleString('en-US', { timeZone: 'America/New_York', timeZoneName: 'short' })}</time></p>
+      <p>
+        Last project update:
+        {lastProjectUpdate ? (
+          <time datetime={lastProjectUpdate}>
+            {new Date(`${lastProjectUpdate}T00:00:00Z`).toLocaleDateString('en-US', {
+              timeZone: 'UTC',
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </time>
+        ) : (
+          <span>Unavailable</span>
+        )}
+      </p>
     </footer>
   </body>
 </html>

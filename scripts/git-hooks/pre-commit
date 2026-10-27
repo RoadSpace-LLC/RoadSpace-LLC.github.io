@@ -9,4 +9,6 @@ zip -r landing.zip . \
   -x ".git/*" \
   -x "node_modules/*" \
   -x ".astro/*" \
-  -x "dist/*"
+  -x "dist/*" \
+  -x ".env" \
+  -x ".env.*"
