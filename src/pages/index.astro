@@ -1,11 +1,13 @@
 ---
 import Article from '../components/Article.astro';
 import ActivityHeatmap from '../components/ActivityHeatmap.astro';
+import SignupButton from '../components/SignupButton.astro';
 ---
+
 <Article>
   <p class="intro">Analyze your driving, understand your performance, and find where to improve.</p>
-  <p class="actions">
-    <a class="button" href="mailto:hello@roadspace.example?subject=RoadSpace%20pilot%20waitlist">Pilot Waitlist <span aria-hidden="true">&rarr;</span></a>
-  </p>
+  <div class="actions">
+    <SignupButton />
+  </div>
   <ActivityHeatmap />
 </Article>
