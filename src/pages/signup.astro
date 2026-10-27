@@ -4,203 +4,58 @@ const home = import.meta.env.BASE_URL;
 ---
 
 <Article title="">
-  <p class="intro">Thank you for your interest!</p>
-  <p>Drop your email in the form below and we'll be in touch</p>
-
-  <form class="signup-form" aria-describedby="signup-status signup-purpose">
-    <p id="signup-status" class="signup-status">
-      Registration opens soon.
+  <div class="signup-page">
+    <div class="form-region">
+      <div class="ml-embedded" data-form="2IXTQ7"></div>
+    </div>
+    <p class="back-link">
+      <a href={home}>&larr; Back to main page</a>
     </p>
-    <fieldset disabled>
-      <legend class="sr-only">Register interest in RoadSpace</legend>
-      <label for="signup-email">Email address</label>
-      <input id="signup-email" name="email" type="email" autocomplete="email" required />
-      <label class="consent" for="signup-consent">
-        <input id="signup-consent" name="consent" type="checkbox" required />
-        <span>
-          I agree to ROADSPACE LLC using my information in accordance with the{' '}
-          <a href="#privacy">Privacy Notice</a> below.
-        </span>
-      </label>
-      <button class="button" type="submit">
-        Register <span aria-hidden="true">&rarr;</span>
-      </button>
-    </fieldset>
-    <p id="signup-purpose" class="form-note">
-      You can withdraw your registration and/or have your personal information deleted by emailing
-      [PRIVACY CONTACT EMAIL].
-    </p>
-  </form>
-
-  <section id="privacy" aria-labelledby="privacy-title">
-    <h2 id="privacy-title">Privacy Notice</h2>
-    <p class="notice-date">Effective date: [DATE]</p>
-
-    <h3>Who we are</h3>
-    <p>
-      RoadSpace is operated by ROADSPACE LLC, based in Connecticut, USA. For requests concerning
-      your personal information, including withdrawal of your registration or deletion of your data,
-      email [PRIVACY CONTACT EMAIL].
-    </p>
-
-    <h3>What we collect and why</h3>
-    <p>
-      When you register, we collect your email address, registration date, and a record of your
-      consent. We use this information to maintain your registration, prevent duplicate records,
-      measure interest, and respond to requests concerning your information.
-    </p>
-    <p>
-      Registration is voluntary. We do not subscribe you to a newsletter or send promotional emails
-      as part of this registration.
-    </p>
-    <p>
-      [figure out exact terms of rollout phases, how you'll send out download links, how long
-      they'll be good for, who gets them, etc; people should expect be contacted regarding their
-      participation, but you want to make sure it's clear you're not going to be annoying]
-    </p>
-
-    <h3>Technical information</h3>
-    <p>
-      Our hosting and security providers, GitHub and Cloudflare, process technical information such
-      as IP addresses and request information to deliver and protect the service.
-    </p>
-    <p>
-      [DESCRIBE ANY APPLICATION LOGS, IP RETENTION, COOKIES, ANALYTICS, OR BOT-PROTECTION TOOLS
-      ACTUALLY USED, INCLUDING THEIR PURPOSES AND RETENTION.]
-    </p>
-
-    <h3>Who receives information</h3>
-    <p>
-      Cloudflare provides the infrastructure that processes and stores registrations on our behalf.
-      Access within RoadSpace is limited to people who need it to operate the registration service.
-    </p>
-    <p>
-      We do not sell your registration information or use it for targeted advertising. We may
-      disclose information where legally required.
-    </p>
-    <p>
-      We may publish aggregate registration counts. We do not publish email addresses or individual
-      registration records.
-    </p>
-
-    <h3>How long we keep it</h3>
-    <p>
-      We retain your registration for [RETENTION PERIOD] after signup, unless you withdraw sooner.
-      We then delete it or remove identifying information. Backup copies expire according to [BACKUP
-      RETENTION PERIOD].
-    </p>
-
-    <h3>Your choices and requests</h3>
-    <p>
-      To withdraw your registration, request deletion, correct your address, or request a copy of
-      your registration information, email [PRIVACY CONTACT EMAIL], preferably from the registered
-      address. We may take reasonable steps to verify your request.
-    </p>
-    <p>
-      Where processing relies on your consent, you may withdraw it at any time. Withdrawal does not
-      affect the lawfulness of processing before withdrawal.
-    </p>
-    <p>
-      Depending on applicable law, you may have additional rights, including the right to complain
-      to your local data-protection authority.
-    </p>
-
-    <h3>International processing</h3>
-    <p>
-      Our providers may process information outside your state or country. [CONFIRM PROCESSING
-      LOCATIONS AND DESCRIBE APPLICABLE INTERNATIONAL-TRANSFER SAFEGUARDS WHERE REQUIRED.]
-    </p>
-  </section>
-  <p class="back-link">
-    <a href={home}>&larr; Back to RoadSpace</a>
-  </p>
+  </div>
 </Article>
 
 <style>
-  .signup-form {
-    margin: 1rem 0 3rem;
-    padding: 1.8rem;
-    border: 1px solid var(--rule);
-  }
-  fieldset {
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-  label {
-    display: block;
-    font-size: 1.5rem;
-  }
-  input[type='email'] {
-    display: block;
-    width: 100%;
-    margin: 0.6rem 0 1.4rem;
-    padding: 0.9rem 1rem;
-    border: 1px solid var(--rule);
-    background: #202020;
-    color: var(--foreground);
-    font: inherit;
-  }
-  .consent {
+  .signup-page {
     display: flex;
-    align-items: flex-start;
-    gap: 0.8rem;
-    margin-bottom: 1.6rem;
-    font-size: 1.3rem;
+    flex: 1 0 auto;
+    flex-direction: column;
+    min-width: 0;
   }
-  .consent input {
-    flex-shrink: 0;
-    margin-top: 0.5rem;
+
+  .form-region {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
   }
-  .button {
-    font-family: inherit;
-    cursor: pointer;
+
+  .ml-embedded {
+    width: 100%;
+    max-width: 400px;
+    min-width: 0;
   }
-  .button:disabled {
-    cursor: not-allowed;
-    opacity: 0.55;
+
+  /* MailerLite injects these elements, so they need global selectors. */
+  .form-region :global(.ml-form-embedContainer) {
+    display: block !important;
+    height: auto !important;
+    width: 100% !important;
   }
-  .signup-status {
-    margin-bottom: 1.2rem;
-    color: var(--muted);
-    font-size: 1.4rem;
+
+  .form-region :global(.ml-form-embedContainer > div) {
+    display: block !important;
+    height: auto !important;
+    width: 100% !important;
   }
-  .form-note,
-  .notice-date {
-    margin: 1rem 0 0;
-    color: var(--muted);
-    font-size: 1.3rem;
+
+  .form-region :global(.ml-form-embedWrapper) {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
-  #privacy {
-    padding-top: 1.6rem;
-    border-top: 1px solid var(--rule);
-    overflow-wrap: anywhere;
-  }
-  h2 {
-    margin: 0 0 0.6rem;
-    font-size: 2rem;
-    line-height: 1.4;
-  }
-  h3 {
-    margin: 2rem 0 0.6rem;
-    font-size: 1.7rem;
-  }
-  #privacy p {
-    font-size: 1.5rem;
-  }
+
   .back-link {
+    flex-shrink: 0;
     margin: 2rem 0 0;
-  }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
   }
 </style>
